@@ -30,9 +30,7 @@ Registeration Number : 212222040181
 ## MainActivity.java
 ```
 package com.example.ex13;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -41,21 +39,16 @@ import android.widget.TextView;
 import java.util.concurrent.Semaphore;
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
-
     // Object used for synchronizing access to counter
     private static final Object lock = new Object();
-
     // Maximum number of concurrent threads
     // that can access the counter
     private static final int MAX_THREADS = 5;
-
     // Semaphore to limit concurrent access to the counter
     private static final Semaphore semaphore = new Semaphore(MAX_THREADS);
-
     // Counter to store the
     // number of button clicks
     private int counter = 0;
-
     // Reference to the text view to
     // display the number of button clicks
     private TextView textView;
@@ -86,13 +79,11 @@ public class MainActivity extends AppCompatActivity {
             updateTextView();
         }).start();
     }
-
     // Method to update the text view on the main thread
     private void updateTextView() {
         // Post the update to the main thread's message queue
         new Handler(getMainLooper()).post(() -> textView.setText(String.valueOf(counter)));
     }
-
 }
 ```
 
@@ -107,7 +98,6 @@ public class MainActivity extends AppCompatActivity {
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
-
     <!-- A text view to display the count -->
     <TextView
         android:id="@+id/text_view"
@@ -119,7 +109,6 @@ public class MainActivity extends AppCompatActivity {
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
     <!-- A button to increment the count -->
     <Button
         android:id="@+id/increment_button"
@@ -131,14 +120,12 @@ public class MainActivity extends AppCompatActivity {
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>
 ```
 
 ## OUTPUT
 
 ![Screenshot from 2024-11-11 14-11-01](https://github.com/user-attachments/assets/d722c926-c087-47b7-9e64-7104f11ea212)![Screenshot from 2024-11-11 14-11-22](https://github.com/user-attachments/assets/83ad5e2e-776d-4a85-9ff1-58f76f47859a)
-
 
 ## RESULT
   Thus a Simple Android Application to create an program that handles thread sychronization using Android Studio is developed and executed successfully.
